@@ -10,7 +10,7 @@ exports.up = function(knex) {
 				.notNullable();
 		})
 
-		.createTable('projects', tbl => {
+		.createTable('resource', tbl => {
 			tbl.increments();
 			tbl.text('resource_name', 128)
 				.notNullable();
