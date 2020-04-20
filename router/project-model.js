@@ -27,15 +27,16 @@ function findById(id) {
 }
 
 function findResource(id) {
-	console.log('find resource')
-	return db('projects')
-		.join('resource')
-		.select('projects.id as projectId', 'projects.prject_name', 'projects.description', 'projects.completed', 'resource.resource_name', 'resource.description' )
-		.where({ projectId: id });
+	
+	return db('resource')
+	// console.log(resource)
+		.join('projects', 'resource.resource_id', 'projects.id')
+		.select('resource.id', 'resource.description', 'resource.resource_name', 'projects.completed' )
+		.where({ resource_id: id });
 }
 
 function addResource(resource) {
-	console.log(resource)
+	// console.log(resource)
 	return db('resource')
 		.insert(resource)
 }

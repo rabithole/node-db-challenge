@@ -59,13 +59,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/:id/resource', (req, res) => {
-	// console.log('body', res.params.id)
-  Projects.findResource()
+	console.log(req.params.id)
+  Projects.findResource(req.params.id)
 	  .then(proj => {
 	    res.json(proj);
 	  })
 	  .catch(err => {
-	    res.status(600).json({ message: 'Failed to get resource' });
+	    res.status(600).json({ message: 'Failed to get resource, dork!' });
 	  });
 });
 
